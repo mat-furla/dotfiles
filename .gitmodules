@@ -1,0 +1,6 @@
+[submodule "extra/bsymlink"]
+	path = extra/bsymlink
+	url = https://github.com/NNBnh/bsymlink.git
+[submodule "extra/sbb"]
+	path = extra/sbb
+	url = https://github.com/NNBnh/superb-bootstrap.git

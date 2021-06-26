@@ -1,0 +1,66 @@
+#    ___           __                       ___     __
+#   / _ \___ _____/ /_____ ____ ____ ___   / (_)__ / /_
+#  / ___/ _ `/ __/  '_/ _ `/ _ `/ -_|_-<  / / (_-</ __/
+# /_/   \_,_/\__/_/\_\\_,_/\_, /\__/___/ /_/_/___/\__/
+#                         /___/
+
+# Add description here:
+# > Hello World!
+# > This is my packages list.
+
+# MARK_CHEATSHEET:
+#     APK:APK-package-name
+#     APT:APT-package-name
+#     DNF:DNF-package-name
+#     EOP:EOPKG-package-name
+#     MPT:Mports-package-name
+#     OBP:OpenBSD-package-name
+#     PAC:Pacman-package-name
+#     PTG:Portage-package-name
+#     PIN:PKGIN-package-name
+#     PNG:PKGNG-package-name
+#     SLK:Slackpkg-package-name
+#     TMP:Termux-package-name
+#     URP:URPMI-package-name
+#     XBP:XBPS-package-name
+#     YUM:YUM-package-name
+#     ZPR:Zypper-package-name
+#     AUR:AUR-package-name
+#     FLA:Flatpak-package-name
+#     HBR:Homebrew-package-name
+#     MCP:MacPorts-package-name
+#     MAS:AS-package-name
+#     NIX:Nix-package-name
+#     SBO:SBO-package-name
+#     SNA:Snap-package-name
+#     BSR:Basher-package-name
+#     BPK:BPKG-package-name
+#     NPM:NPM-package-name
+#     PIP:PIP-package-name
+#     YRN:Yarn-package-name
+#
+# NOTE: the mark and package name must be joined by a colon in between without whitespace.
+#   WRONG:
+#     MAK: package-name
+#     MAK : package-name
+#     MAK package-name
+#     MAK:package name
+#
+#   CORRECT:
+#     MAK:package-name
+#
+# EXAMPLE: to see what a good packages list look like, see NNB's file: https://github.com/NNBnh/dots/blob/03e7ca9979ae868e0b5a17c17551322d3b7600ea/packageslist
+
+
+### Label (use "#" to comments)
+  APT:firefox                                                                                   # Add some description...
+  APT:mpv                                                                                       # Each individual package should be on a separate line
+
+  APT:kakoune                     PAC:kakoune                     XBP:kakoune                   # Package can be install on multiple different distro
+  APT:libimage-exiftool-perl      PAC:perl-image-exiftool         XBP:exiftool                  # A good practice is to put all distro variant of the same package on one line
+  FLA:org.godotengine.Godot       AUR:godot-bin                   XBP:godot                     # So those package don't get reinstall by another package manager
+
+### More example
+  SNA:blender                                                                                   # Use Snapcraft package on every distro
+                                                                  XBP:shellcheck                # Install this package on Void-Linux only
+# SNA:retroarch                   PAC:retroarch                   XBP:retroarch                 # Comment out all package on this line

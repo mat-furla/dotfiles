@@ -1,0 +1,137 @@
+#!/bin/sh
+
+#    ____    __
+#   / __/__ / /___ _____
+#  _\ \/ -_) __/ // / _ \
+# /___/\__/\__/\_,_/ .__/
+#                 /_/
+
+# Add description here:
+# > Hello World!
+# > This is my setup script.
+
+
+# Imports
+DOTFILES_PATH=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+
+cd "$DOTFILES_PATH" || exit 1
+git submodule update --init --recursive --remote --merge 2>&-
+cd "$WD" || exit 1
+
+. "$DOTFILES_PATH/extra/sbb/sbb" # You can change SSB packages manager path here
+
+
+# Values
+BSYMLINK_PATH="$DOTFILES_PATH/extra/bsymlink/bin/bsymlink" # If you use Bsymlink, you can change Bsymlink path here
+
+# source "$DOTFILES_PATH/home/.bashrc" # You can import values or functions from other file
+
+STEPS="${*:-install before home root after}" # Default order of steps
+
+
+# Functions
+install_packages() {
+	printf '\n\033[1;7;34m%s\033[0m\n' 'Install packages' >&2
+
+	# You can add additional package manager
+	# Example: to add "SomePackageManager"
+	#SomePackageManager_MARK='SPM'
+	#SomePackageManager_PM='somepm'
+	#SomePackageManager_COMMAND="$PERMISSION_COMMAND $SomePackageManager_PM install --assume-yes"
+	#
+	# Creating a setup function for "SomePackageManager"
+	#sbb_setup_SomePackageManager() {
+	#	$PERMISSION_COMMAND somepm update  --assume-yes
+	#	$PERMISSION_COMMAND somepm upgrade --assume-yes
+	#}
+	#
+	# Then add "SomePackageManager" to the package managers list only when bootstrapping on Linux
+	#[ "$KERNEL" = 'linux' ] && PACKAGEMANAGER_LIST="$PACKAGEMANAGER_LIST SomePackageManager"
+
+	# You can also change some aspect of an existence package manager
+	# Example: using pipx to manage pip packages
+	#PIP_PM='sbb_pipx'
+	#PIP_COMMAND="$PIP_PM"
+	#sbb_setup_PIP() {
+	#	sbb_install_curl
+	#	sbb_install_python
+	#
+	#	cd "$TEMPORARY" || exit 1
+	#	curl --remote-header-name --location --remote-name "https://bootstrap.pypa.io/get-pip.py"
+	#	python get-pip.py
+	#
+	#	pip install --upgrade pip
+	#	pip install --user pipx
+	#	pipx ensurepath
+	#
+	#	sbb_make_install_command 'pipx' "pipx install"
+	#}
+
+	sbb_install_packages "$DOTFILES_PATH/packageslist" # You can change packageslist's path here
+}
+
+symlink_home() {
+	printf '\n\033[1;7;36m%s\033[0m\n' "Symlink to home ($HOME)" >&2
+
+	"$BSYMLINK_PATH" "$DOTFILES_PATH/home" "$HOME"
+	# Use this instead if you want to batch symlink with stow (you must cd to the directory that contain this setup file)
+	#stow -vt ~ home
+}
+
+symlink_root() {
+	printf '\n\033[1;7;36m%s\033[0m\n' 'Symlink to root (/)' >&2
+
+	$PERMISSION_COMMAND "$BSYMLINK_PATH" "$DOTFILES_PATH/root" '/'
+	# Use this instead if you want to batch symlink with stow (you must cd to the directory that contain this setup file)
+	#$PERMISSION_COMMAND stow -vt / root
+}
+
+before_symlink() {
+	printf '\n\033[1;7;33m%s\033[0m\n' 'Setup before symlink' >&2
+
+	# Remove files that may conflict when symlink dotfiles
+	#rm .bashrc
+
+	# Remove conflicting items in $HOME/.config
+	#[ -d "$HOME/.config" ] && for config_directory_path in "$HOME/.config/."* "$HOME/.config/"*; do
+	#	config_directory_name="${config_directory_path#$XDG_CONFIG_HOME/}"
+	#
+	#	if [ "$config_directory_name" != '.' ] && [ "$config_directory_name" != '..' ] && [ -e "$HOME/dots/home/.config/$config_directory_name" ]; then
+	#		rm "$config_directory_path"
+	#	fi
+	#done
+
+	# Create directories (to symlink files inside only, not the directory itself)
+	#mkdir "$HOME/.config" "$HOME/.local/share" "$HOME/.local/bin" "$HOME/.cache"
+}
+
+after_symlink() {
+	printf '\n\033[1;7;33m%s\033[0m\n' 'Setup after symlink' >&2
+
+	# Change default shell
+	#chsh -s "$(command -v bash)"
+
+	# Enable firewall
+	#$PERMISSION_COMMAND ufw enable
+}
+
+
+# Start
+for step_check in $STEPS; do
+	case "$step_check" in
+		'i'|'install') steps_list="${steps_list:+$steps_list; }install_packages" ;;
+		'b'|'before')  steps_list="${steps_list:+$steps_list; }before_symlink"   ;;
+		'h'|'home')    steps_list="${steps_list:+$steps_list; }symlink_home"     ;;
+		'r'|'root')    steps_list="${steps_list:+$steps_list; }symlink_root"     ;;
+		'a'|'after')   steps_list="${steps_list:+$steps_list; }after_symlink"    ;;
+		*)
+			printf '\n\033[1;7;31m%s\033[0m\n' "Step '$step_check' not found" >&2
+			exit 1
+		;;
+	esac
+done
+
+eval "$steps_list"
+
+
+exit 0
