@@ -14,8 +14,6 @@ git submodule update --init --recursive --remote --merge 2>&-
 cd "$WD" || exit 1
 
 . "$DOTFILES_PATH/extra/sbb/sbb"
-
-# Values
 BSYMLINK_PATH="$DOTFILES_PATH/extra/bsymlink/bin/bsymlink"
 STEPS="${*:-install before home root after}"
 
@@ -49,7 +47,7 @@ before_symlink() {
 	done
 
 	# Create directories (to symlink files inside only, not the directory itself)
-	mkdir "$HOME/.config" "$HOME/.local/share" "$HOME/.local/bin" "$HOME/.cache" "$HOME/Dev" "$HOME/Documents"
+	mkdir -p "$HOME/.config" "$HOME/Dev" "$HOME/Documents" "$HOME/.local/bin"
 }
 
 after_symlink() {
