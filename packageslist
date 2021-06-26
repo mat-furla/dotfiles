@@ -4,10 +4,6 @@
 # /_/   \_,_/\__/_/\_\\_,_/\_, /\__/___/ /_/_/___/\__/
 #                         /___/
 
-# Add description here:
-# > Hello World!
-# > This is my packages list.
-
 # MARK_CHEATSHEET:
 #     APK:APK-package-name
 #     APT:APT-package-name
@@ -38,29 +34,64 @@
 #     NPM:NPM-package-name
 #     PIP:PIP-package-name
 #     YRN:Yarn-package-name
-#
-# NOTE: the mark and package name must be joined by a colon in between without whitespace.
-#   WRONG:
-#     MAK: package-name
-#     MAK : package-name
-#     MAK package-name
-#     MAK:package name
-#
-#   CORRECT:
-#     MAK:package-name
-#
-# EXAMPLE: to see what a good packages list look like, see NNB's file: https://github.com/NNBnh/dots/blob/03e7ca9979ae868e0b5a17c17551322d3b7600ea/packageslist
 
+  # Firmware
+  APT:intel-microcode
+  APT:firmware-iwlwifi
 
-### Label (use "#" to comments)
-  APT:firefox                                                                                   # Add some description...
-  APT:mpv                                                                                       # Each individual package should be on a separate line
+  ## Windows Manager
+  APT:xorg
+  APT:bspwm
+  APT:sxhkd
 
-  APT:kakoune                     PAC:kakoune                     XBP:kakoune                   # Package can be install on multiple different distro
-  APT:libimage-exiftool-perl      PAC:perl-image-exiftool         XBP:exiftool                  # A good practice is to put all distro variant of the same package on one line
-  FLA:org.godotengine.Godot       AUR:godot-bin                   XBP:godot                     # So those package don't get reinstall by another package manager
+  ## Utilities
+  APT:fish
+  APT:rofi
+  APT:mousepad
+  APT:nnn
+  APT:jq
+  APT:file
+  APT:fzf
+  APT:trash-cli
+  APT:hsetroot
+  APT:viewnior
+  APT:gtk2-engines-murrine
+  APT:gnome-themes-standard
+  APT:atool
+  APT:rar
+  APT:zip
+  APT:unar
+  APT:plzip
+  APT:p7zip-rar
+  APT:mpv
+  APT:zathura
+  APT:picom
+  APT:flameshot
+  APT:tlp
+  APT:light
+  APT:dbus-x11
+  APT:dunst
+  APT:libglib2.0-bin
+  APT:alsa-utils
+  APT:pulseaudio
+  APT:ufw
+  APT:ssh-askpass
+  # APT:snapper
+  # APT:snapper-gui
+  # APT:python3-dbus
 
-### More example
-  SNA:blender                                                                                   # Use Snapcraft package on every distro
-                                                                  XBP:shellcheck                # Install this package on Void-Linux only
-# SNA:retroarch                   PAC:retroarch                   XBP:retroarch                 # Comment out all package on this line
+  ## Theme
+  APT:materia-gtk-theme
+  APT:papirus-icon-theme
+  APT:fonts-noto-color-emoji
+  APT:fonts-font-awesome
+
+  ## Hardware Acceleration
+  APT:i965-va-driver-shaders
+  APT:intel-media-va-driver-non-free
+
+  ## Development
+  APT:git
+  # APT:make
+  # APT:nodejs
+  # APT:yarnpkg
