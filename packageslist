@@ -35,63 +35,68 @@
 #     PIP:PIP-package-name
 #     YRN:Yarn-package-name
 
+                                            XBP:void-repo-nonfree
   # Firmware
-  APT:intel-microcode
+  APT:intel-microcode                       XBP:linux-firmware-intel
   APT:firmware-iwlwifi
 
-  ## Windows Manager
-  APT:xorg
-  APT:bspwm
-  APT:sxhkd
-
-  ## Utilities
-  APT:fish
-  APT:rofi
-  APT:mousepad
-  APT:nnn
-  APT:jq
-  APT:file
-  APT:fzf
-  APT:trash-cli
-  APT:hsetroot
-  APT:viewnior
-  APT:gtk2-engines-murrine
-  APT:gnome-themes-standard
-  APT:atool
-  APT:rar
-  APT:zip
-  APT:unar
-  APT:plzip
-  APT:p7zip-rar
-  APT:mpv
-  APT:zathura
-  APT:picom
-  APT:flameshot
-  APT:tlp
-  APT:light
-  APT:dbus-x11
-  APT:dunst
-  APT:libglib2.0-bin
-  APT:alsa-utils
-  APT:pulseaudio
-  APT:ufw
-  APT:ssh-askpass
-  # APT:snapper
-  # APT:snapper-gui
-  # APT:python3-dbus
-
-  ## Theme
-  APT:materia-gtk-theme
-  APT:papirus-icon-theme
-  APT:fonts-noto-color-emoji
-  APT:fonts-font-awesome
-
-  ## Hardware Acceleration
+  ## Video
   APT:i965-va-driver-shaders
   APT:intel-media-va-driver-non-free
+                                            XBP:nvidia
+
+  ## Windows Manager
+  APT:xorg                                  XBP:xorg-minimal
+  APT:bspwm                                 XBP:bspwm
+  APT:sxhkd                                 XBP:sxhkd
+
+  ## Utilities
+                                            XBP:alacritty
+  APT:fish                                  XBP:fish-shell
+  APT:rofi                                  XBP:rofi
+  APT:mousepad                              XBP:mousepad
+  APT:nnn                                   XBP:nnn
+  APT:jq                                    XBP:jq
+  APT:file                                  XBP:file
+  APT:fzf                                   XBP:fzf
+  APT:trash-cli                             XBP:trash-cli
+                                            XBP:xsetroot
+  APT:atool                                 XBP:atool
+  APT:light
+  APT:dbus-x11                              XBP:dbus-x11
+  APT:dunst                                 XBP:dunst
+  APT:libglib2.0-bin
+  APT:tlp
+  APT:ufw                                   XBP:ufw
+  # APT:snapper                             XBP:snapper
+  # APT:snapper-gui
+
+  ## Multimedia
+  APT:viewnior                              XBP:viewnior
+  APT:mpv                                   XBP:mpv
+  APT:zathura                               XBP:zathura
+                                            XBP:zathura-pdf-poppler
+  APT:flameshot                             XBP:flameshot
+  APT:alsa-utils                            XBP:alsa-utils
+                                            XBP:alsa-plugins-pulseaudio
+  APT:pulseaudio                            XBP:pulseaudio
+                                            XBP:pavucontrol
+  APT:obs-studio                            XBP:obs
+
+  ## Theme
+  APT:gtk2-engines-murrine                  XBP:gtk-engine-murrine
+  APT:gnome-themes-standard                 XBP:gnome-themes-standard
+  APT:materia-gtk-theme                     XBP:adwaita-icon-theme
+  APT:papirus-icon-theme                    XBP:papirus-icon-theme
+  APT:fonts-dejavu                          XBP:font-iosevka
+  APT:fonts-noto-color-emoji                XBP:noto-fonts-emoji
+  APT:fonts-font-awesome                    XBP:font-awesome5
 
   ## Development
-  APT:git
-  # APT:make
-  # APT:nodejs
-  # APT:yarnpkg
+  APT:git                                   XBP:git
+  APT:ssh-askpass                           XBP:gnome-ssh-askpass
+  APT:docker                                XBP:docker
+  APT:docker-compose                        XBP:docker-compose
+  # APT:make                                XBP:make
+  # APT:nodejs                              XBP:nodejs
+  # APT:yarnpkg                             XBP:yarn
