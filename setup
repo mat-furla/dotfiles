@@ -20,62 +20,62 @@ STEPS="${*:-install before home root after}"
 
 # Functions
 install_packages() {
-	printf '\n\033[1;7;34m%s\033[0m\n' 'Install packages' >&2
-	sbb_install_packages "$DOTFILES_PATH/packageslist"
+  printf '\n\033[1;7;34m%s\033[0m\n' 'Install packages' >&2
+  sbb_install_packages "$DOTFILES_PATH/packageslist"
 }
 
 symlink_home() {
-	printf '\n\033[1;7;36m%s\033[0m\n' "Symlink to home ($HOME)" >&2
-	"$BSYMLINK_PATH" "$DOTFILES_PATH/home" "$HOME"
+  printf '\n\033[1;7;36m%s\033[0m\n' "Symlink to home ($HOME)" >&2
+  "$BSYMLINK_PATH" "$DOTFILES_PATH/home" "$HOME"
 }
 
 symlink_root() {
-	printf '\n\033[1;7;36m%s\033[0m\n' 'Symlink to root (/)' >&2
-	$PERMISSION_COMMAND "$BSYMLINK_PATH" "$DOTFILES_PATH/root" '/'
+  printf '\n\033[1;7;36m%s\033[0m\n' 'Symlink to root (/)' >&2
+  $PERMISSION_COMMAND "$BSYMLINK_PATH" "$DOTFILES_PATH/root" '/'
 }
 
 before_symlink() {
-	printf '\n\033[1;7;33m%s\033[0m\n' 'Setup before symlink' >&2
+  printf '\n\033[1;7;33m%s\033[0m\n' 'Setup before symlink' >&2
 
-	# Remove conflicting items in $HOME/.config
-	[ -d "$HOME/.config" ] && for config_directory_path in "$HOME/.config/."* "$HOME/.config/"*; do
-		config_directory_name="${config_directory_path#$XDG_CONFIG_HOME/}"
-	
-		if [ "$config_directory_name" != '.' ] && [ "$config_directory_name" != '..' ] && [ -e "$HOME/.dotfiles/home/.config/$config_directory_name" ]; then
-			rm "$config_directory_path"
-		fi
-	done
+  # Remove conflicting items in $HOME/.config
+  [ -d "$HOME/.config" ] && for config_directory_path in "$HOME/.config/."* "$HOME/.config/"*; do
+    config_directory_name="${config_directory_path#$XDG_CONFIG_HOME/}"
+  
+    if [ "$config_directory_name" != '.' ] && [ "$config_directory_name" != '..' ] && [ -e "$HOME/.dotfiles/home/.config/$config_directory_name" ]; then
+      rm "$config_directory_path"
+    fi
+  done
 
-	# Create directories (to symlink files inside only, not the directory itself)
-	mkdir -p "$HOME/Dev" "$HOME/Documents" "$HOME/.config/fish" "$HOME/.config/nnn" "$HOME/.local/bin" 
+  # Create directories (to symlink files inside only, not the directory itself)
+  mkdir -p "$HOME/Dev" "$HOME/Documents" "$HOME/.config/fish" "$HOME/.config/nnn" "$HOME/.local/bin" 
 }
 
 after_symlink() {
-	printf '\n\033[1;7;33m%s\033[0m\n' 'Setup after symlink' >&2
+  printf '\n\033[1;7;33m%s\033[0m\n' 'Setup after symlink' >&2
 
-	$PERMISSION_COMMAND ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
-	$PERMISSION_COMMAND ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
-	$PERMISSION_COMMAND ln -s /etc/fonts/conf.avail/10-hinting-slight.conf /etc/fonts/conf.d
+  $PERMISSION_COMMAND ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
+  $PERMISSION_COMMAND ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
+  $PERMISSION_COMMAND ln -s /etc/fonts/conf.avail/10-hinting-slight.conf /etc/fonts/conf.d
 
-	chsh -s `which fish`
-	$PERMISSION_COMMAND usermod -a -G video $LOGNAME
-	$PERMISSION_COMMAND ufw enable
+  chsh -s `which fish`
+  $PERMISSION_COMMAND usermod -a -G video $LOGNAME
+  $PERMISSION_COMMAND ufw enable
 }
 
 
 # Start
 for step_check in $STEPS; do
-	case "$step_check" in
-		'i'|'install') steps_list="${steps_list:+$steps_list; }install_packages" ;;
-		'b'|'before')  steps_list="${steps_list:+$steps_list; }before_symlink"   ;;
-		'h'|'home')    steps_list="${steps_list:+$steps_list; }symlink_home"     ;;
-		'r'|'root')    steps_list="${steps_list:+$steps_list; }symlink_root"     ;;
-		'a'|'after')   steps_list="${steps_list:+$steps_list; }after_symlink"    ;;
-		*)
-			printf '\n\033[1;7;31m%s\033[0m\n' "Step '$step_check' not found" >&2
-			exit 1
-		;;
-	esac
+  case "$step_check" in
+    'i'|'install') steps_list="${steps_list:+$steps_list; }install_packages" ;;
+    'b'|'before')  steps_list="${steps_list:+$steps_list; }before_symlink"   ;;
+    'h'|'home')    steps_list="${steps_list:+$steps_list; }symlink_home"     ;;
+    'r'|'root')    steps_list="${steps_list:+$steps_list; }symlink_root"     ;;
+    'a'|'after')   steps_list="${steps_list:+$steps_list; }after_symlink"    ;;
+    *)
+      printf '\n\033[1;7;31m%s\033[0m\n' "Step '$step_check' not found" >&2
+      exit 1
+    ;;
+  esac
 done
 
 eval "$steps_list"
