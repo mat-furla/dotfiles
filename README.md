@@ -30,9 +30,6 @@
 >> git clone https://github.com/mat-furla/dotfiles .dotfiles && ./dotfiles/setup
 ```
 
-An `install.sh` is included to add all
-the needed packages for my system, modify as wanted.
-
 # Hardware Acceleration in Browser
 
 1) Enable the following flags:
