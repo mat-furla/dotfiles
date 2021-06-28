@@ -47,6 +47,7 @@
 
   ## Windows Manager
   APT:xorg                                  XBP:xorg-minimal
+                                            XBP:xsetroot
   APT:bspwm                                 XBP:bspwm
   APT:sxhkd                                 XBP:sxhkd
 
@@ -60,7 +61,6 @@
   APT:file                                  XBP:file
   APT:fzf                                   XBP:fzf
   APT:trash-cli                             XBP:trash-cli
-                                            XBP:xsetroot
   APT:atool                                 XBP:atool
   APT:light
   APT:dbus-x11                              XBP:dbus-x11
@@ -94,9 +94,6 @@
 
   ## Development
   APT:git                                   XBP:git
-  APT:ssh-askpass                           XBP:gnome-ssh-askpass
+  APT:ssh-askpass-gnome                     XBP:gnome-ssh-askpass
   APT:docker                                XBP:docker
   APT:docker-compose                        XBP:docker-compose
-  # APT:make                                XBP:make
-  # APT:nodejs                              XBP:nodejs
-  # APT:yarnpkg                             XBP:yarn
