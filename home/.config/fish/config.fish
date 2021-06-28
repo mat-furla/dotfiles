@@ -12,11 +12,19 @@ abbr chx 'chmod +x'
 abbr rb 'sudo shutdown -r now'
 abbr p 'sudo shutdown -h now'
 
-abbr q 'apt search'
-abbr i 'sudo apt install'
-abbr u 'sudo apt update && sudo apt upgrade'
-abbr r 'sudo apt purge'
-abbr c 'sudo apt autoremove'
+if [  -n "(uname -a | grep void)" ]
+  abbr q 'xbps-query -Rs'
+  abbr i 'sudo xbps-install -S'
+  abbr u 'sudo xbps-install -Syyu'
+  abbr r 'sudo xbps-remove -Rcn'
+  abbr c 'sudo xbps-remove -o'
+else
+  abbr q 'apt search'
+  abbr i 'sudo apt install'
+  abbr u 'sudo apt update && sudo apt upgrade'
+  abbr r 'sudo apt purge'
+  abbr c 'sudo apt autoremove'
+end
 
 abbr gs 'git status'
 abbr ga 'git add --all'
@@ -42,7 +50,7 @@ set -gx NNN_TRASH 1
 set -gx QT_QPA_PLATFORMTHEME gtk3
 set -gx _JAVA_AWT_WM_NONREPARENTING 1
 
-set -gx BROWSER brave-browser
+set -gx BROWSER chromium
 set -gx VISUAL mousepad
 set -gx EDITOR nano
 

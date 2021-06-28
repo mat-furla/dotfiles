@@ -10,8 +10,6 @@
 #        ░  ░    ░  ░     ░  ░░ ░         ░      ░                     ░ ░     
 #                             ░                                        ░ ░     
 
-
-## WINDOW
 window:
   dimensions:
     columns: 75
@@ -31,47 +29,34 @@ window:
   history: 10000
   multiplier: 3
 
-
-## FONT
 font:
   normal:
     family: Iosevka Term
     style: Regular
-
   bold:
     family: Iosevka Term
     style: Bold
-
   italic:
     family: Iosevka Term
     style: Italic
-
   bold_italic:
     family: Iosevka Term
     style: Bold Italic
-
   size: 9
-
   offset:
     x: 0
     y: 0
-
   glyph_offset:
     x: 0
     y: 0
 
-
-## COLORS
 colors:
   primary:
     background: '0x1a1a1a'
     foreground: '0xeeffff'
-
   cursor:
     text: '0x212121'
     cursor: '0xeeffff'
-
-  # Normal colors
   normal:
     black:   '0x212121'
     red:     '0xf07178'
@@ -81,8 +66,6 @@ colors:
     magenta: '0xc792ea'
     cyan:    '0x89ddff'
     white:   '0xeeffff'
-
-  # Bright colors
   bright:
     black:   '0x4a4a4a'
     red:     '0xf07178'
@@ -92,7 +75,6 @@ colors:
     magenta: '0xc792ea'
     cyan:    '0x89ddff'
     white:   '0xffffff'
-
   indexed_colors:
     - { index: 16, color: '0xf78c6c' }
     - { index: 17, color: '0xff5370' }
@@ -100,36 +82,23 @@ colors:
     - { index: 19, color: '0x353535' }
     - { index: 20, color: '0xb2ccd6' }
     - { index: 21, color: '0xeeffff' }
-
 custom_cursor_colors: true
 draw_bold_text_with_bright_colors: false
 
-
-## OPACITY
 background_opacity: 1
 
-
-## CLIPBOARD
 selection:
   save_to_clipboard: true
 
-
-## CURSOR
 cursor:
   style: Block
   unfocused_hollow: true
 
-
-## WORKING_DIRECTORY
 working_directory: None
 
-
-## MOUSE
 mouse:
   hide_when_typing: true
 
-
-## KEY BINDINGS
 key_bindings:
   - { key: V,              mods: Control|Alt, action: Paste            }
   - { key: C,              mods: Control|Alt, action: Copy             }

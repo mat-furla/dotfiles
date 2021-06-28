@@ -47,7 +47,7 @@ before_symlink() {
 	done
 
 	# Create directories (to symlink files inside only, not the directory itself)
-	mkdir -p "$HOME/.config" "$HOME/Dev" "$HOME/Documents" "$HOME/.local/bin"
+	mkdir -p "$HOME/Dev" "$HOME/Documents" "$HOME/.config/fish" "$HOME/.config/nnn" "$HOME/.local/bin" 
 }
 
 after_symlink() {

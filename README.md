@@ -27,8 +27,7 @@
 # Installation
 
 ```sh
->> git clone https://github.com/mat-furla/dotfiles .dotfiles
->> ./dotfiles/setup
+>> git clone https://github.com/mat-furla/dotfiles .dotfiles && ./dotfiles/setup
 ```
 
 An `install.sh` is included to add all
@@ -36,7 +35,13 @@ the needed packages for my system, modify as wanted.
 
 # Hardware Acceleration in Browser
 
-1) Enable flags contained in `extra/chromium.conf`
+1) Enable the following flags:
+  ```
+  enable-gpu-rasterization
+  enable-zero-copy
+  ignore-gpu-blocklist
+  enable-accelerated-video-decode
+  ```
 2) Install the h264ify extension
 
 # BTRFS flags

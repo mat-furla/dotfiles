@@ -10,18 +10,13 @@
 #  ░    ░   ▒ ░   ░   ░ ░  ▒ ░  ░       
 #  ░    ░   ░           ░  ░            
 
-## DBUS
-if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
-  eval `dbus-launch --sh-syntax --exit-with-session`
-  echo "D-Bus per-session daemon address is: $DBUS_SESSION_BUS_ADDRESS"
+if [  -n "$(uname -a | grep void)" ]
+then
+  xrdb -merge ~/.Xresources
 fi
 
-## BACKGROUND
-xsetroot -mod 10 2 -bg "#121212" -fg "#2D2D2D"
-
-## CURSOR
+xsetroot -bg "#1A1A1A" -fg "#212121" -mod 12 2
 xsetroot -cursor_name left_ptr
 
-## WM
 sxhkd &
-exec dbus-launch bspwm
+exec dbus-run-session -- bspwm
