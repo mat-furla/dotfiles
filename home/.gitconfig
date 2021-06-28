@@ -1,5 +1,7 @@
 [user]
-	email = matheus.furlanetto@la.logicalis.com
-	name = Matheus Furlanetto
+  email = matheus.furlanetto@la.logicalis.com
+  name = Matheus Furlanetto
 [credential]
-	helper = store
+  helper = store
+[init]
+  defaultBranch = main
