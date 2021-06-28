@@ -1,5 +1,4 @@
 #!/bin/sh
 
 dir="$HOME/.config/rofi/config"
-
 rofi -no-lazy-grab -show drun -modi drun -theme $dir
