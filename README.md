@@ -26,8 +26,8 @@
 
 # Installation
 
-```sh
->> git clone https://github.com/mat-furla/dotfiles .dotfiles && ./dotfiles/setup
+```bash
+>> git clone https://github.com/mat-furla/dotfiles .dotfiles && .dotfiles/setup
 ```
 
 # Hardware Acceleration in Browser
@@ -43,7 +43,7 @@
 
 # BTRFS flags
 
-```plain
+```
 rw,ssd,noatime,autodefrag,compress=zstd,space_cache,commit=120,subvol=__
 ```
 
