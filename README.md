@@ -27,7 +27,7 @@
 # Installation
 
 ```bash
->> git clone https://github.com/mat-furla/dotfiles .dotfiles && .dotfiles/setup
+>> git clone --recursive https://github.com/mat-furla/dotfiles .dotfiles && .dotfiles/setup
 ```
 
 # Hardware Acceleration in Browser
