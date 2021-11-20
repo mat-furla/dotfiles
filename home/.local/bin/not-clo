@@ -13,4 +13,4 @@
 # ░                         
 
 clock=$(date +"%H:%M")
-notify-send.sh -r 2 "$(echo " $clock")"
+dunstify -r 2 "$(echo " $clock")"

@@ -65,4 +65,4 @@ else
    fi
 fi
 
-notify-send.sh -r 3 "$(echo "$icon $power"%)"
+dunstify -r 3 "$(echo "$icon $power"%)"

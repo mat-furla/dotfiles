@@ -104,3 +104,6 @@ key_bindings:
   - { key: C,              mods: Control|Alt, action: Copy             }
   - { key: NumpadAdd,      mods: Control,     action: IncreaseFontSize }
   - { key: NumpadSubtract, mods: Control,     action: DecreaseFontSize }
+
+env:
+  TERM: xterm-256color

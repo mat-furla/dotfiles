@@ -1,8 +1,0 @@
-#!/bin/sh
-
-dir="$HOME/.config/rofi/config"
-bookmarks=$HOME/.config/chromium/Default/Bookmarks
-
-jq -r '.roots.bookmark_bar.children[], .roots.synced.children[] | .name, .url' $bookmarks \
-| paste -d " $"  - - | rofi -dmenu -i -p favs -theme $dir \
-| grep -Eo '(http|https)://.*' | xargs -r -I {} 'chromium' {}

@@ -238,8 +238,8 @@ handle_extension() {
 
         ## JSON
         json)
-            if [ "$GUI" -ne 0 ] && which mousepad >/dev/null 2>&1; then
-                nohup mousepad "${FPATH}" >/dev/null 2>&1 &
+            if [ "$GUI" -ne 0 ] && which leafpad >/dev/null 2>&1; then
+                nohup leafpad "${FPATH}" >/dev/null 2>&1 &
                 exit 0
             elif which jq >/dev/null 2>&1; then
                 jq --color-output . "${FPATH}" | eval "$PAGER"

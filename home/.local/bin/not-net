@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ -n "$(ip addr | grep 'state UP')" ]]; then
+  interface="$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $NF}')"
+  dunstify -r 8 "$(echo " $interface")"
+else
+  dunstify -r 8 "$(echo " disconnected")"
+fi
+

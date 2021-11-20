@@ -12,4 +12,4 @@
 #     ░        ░ ░     ░     ░  ░   
 
 work=$(bspc query -D -d focused --names)
-notify-send.sh -r 1 "$(echo " $work")"
+dunstify -r 1 "$(echo " $work")"

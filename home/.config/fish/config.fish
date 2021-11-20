@@ -12,20 +12,13 @@ abbr chx 'chmod +x'
 abbr rb 'sudo shutdown -r now'
 abbr p 'sudo shutdown -h now'
 
-if [  -n "(uname -a | grep void)" ]
-  abbr q 'xbps-query -Rs'
-  abbr i 'sudo xbps-install -S'
-  abbr u 'sudo xbps-install -Syyu'
-  abbr r 'sudo xbps-remove -Rcn'
-  abbr c 'sudo xbps-remove -o'
-else
-  abbr q 'apt search'
-  abbr i 'sudo apt install'
-  abbr u 'sudo apt update && sudo apt upgrade'
-  abbr r 'sudo apt purge'
-  abbr c 'sudo apt autoremove'
-end
+abbr q 'xbps-query -Rs'
+abbr i 'sudo xbps-install -S'
+abbr u 'sudo xbps-install -Syyu'
+abbr r 'sudo xbps-remove -Rcn'
+abbr c 'sudo xbps-remove -o'
 
+abbr code 'code-oss'
 abbr gs 'git status'
 abbr ga 'git add --all'
 abbr gl 'git pull'
@@ -44,14 +37,14 @@ set PATH $HOME/.yarn/bin $PATH
 set -gx NNN_BMS 'd:/home/matheus/Downloads/;D:/home/matheus/Dev'
 set -gx NNN_OPENER $HOME/.config/nnn/plugins/nuke
 set -gx NNN_FCOLORS '02030b020005060f0d0b0d09'
-set -gx NNN_PLUG 'm:-_|mousepad $nnn;c:-_|code $nnn;f:fzopen'
+set -gx NNN_PLUG 'l:-_|leafpad $nnn;c:-_|code-oss $nnn;f:fzopen'
 set -gx NNN_TRASH 1
 
 set -gx QT_QPA_PLATFORMTHEME gtk3
 set -gx _JAVA_AWT_WM_NONREPARENTING 1
 
-set -gx BROWSER chromium
-set -gx VISUAL mousepad
+set -gx BROWSER firefox
+set -gx VISUAL leafpad
 set -gx EDITOR nano
 
 
