@@ -10,7 +10,7 @@ configuration {
   sidebar-mode:                   false;
 }
 
-@import "material-darker.rasi"
+@import "gruvbox.rasi"
 
 window {
   transparency:                   "real";
