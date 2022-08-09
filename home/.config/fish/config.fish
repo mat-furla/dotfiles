@@ -1,7 +1,5 @@
 ## ABREVIATIONS
 abbr sd 'sudo'
-abbr ls 'n'
-abbr o 'micro'
 abbr N 'sudo -E nnn'
 abbr dl 'cd $HOME/Downloads'
 abbr doc 'cd $HOME/Documents'

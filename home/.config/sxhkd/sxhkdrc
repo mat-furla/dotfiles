@@ -63,8 +63,7 @@ super + {o,i}
 
 ## Focus/Send To Desktop
 super + {_,shift + }{1-9,0}
-    bspc {desktop -f,node -d} '^{1-9,10}'; \
-    not-work
+    bspc {desktop -f,node -d} '^{1-9,10}'
 
 
 #### PRESELECT
@@ -101,45 +100,35 @@ super + {h,j,k,l}
 #### CUSTOM
 ## Terminal
 super + Return
-    kitty
+    alacritty
 
 ## Launcher
 super + space
     launcher
 
-## Bookmarks
-super + shift + space
-    bookmark-launcher
-
 ## Vol Up
 XF86AudioRaiseVolume
-    amixer set Master on ;\
-    amixer -q sset Master 5%+ ;\
-    not-vol
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
 
 ## Vol Down
 XF86AudioLowerVolume
-    amixer set Master on ;\
-    amixer -q sset Master 5%- ;\
-    not-vol
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 ## Vol Mute
 XF86AudioMute
-    amixer -q sset Master toggle ;\
-    not-vol
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 ## Mic
 XF86AudioMicMute
-    amixer set Capture toggle ;\
-    not-mic
+    amixer set Capture toggle
 
 ## Spotify Toggle
 super + XF86AudioMute
-    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+    playerctl play-pause
 
 ## Spotify Prev/Next
 super + XF86Audio{Lower,Raise}Volume
-    {dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous, dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next}
+    {playerctl previous, playerctl next}
 
 ## Backlight
 XF86MonBrightness{Up,Down}
@@ -147,11 +136,4 @@ XF86MonBrightness{Up,Down}
 
 ## Screenshot
 Print
-    flameshot gui -p $HOME
-
-# Notification
-super + q
-    not-work ;\
-    not-clo ;\
-    not-net ;\
-    not-bat
+  flameshot gui

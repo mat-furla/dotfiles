@@ -1,5 +1,5 @@
 configuration {
-  font:                           "Iosevka Medium 12";
+  font:                           "JetBrainsMonoMedium Nerd Font 18";
   show-icons:                     true;
   icon-theme:                     "Papirus";
   display-drun:                   "Apps";
@@ -32,7 +32,7 @@ prompt {
   padding:                        1% 0.75% 1% 0.75%;
   background-color:               @ac;
   text-color:                     @fg;
-  font:                           "Iosevka Medium 12";
+  font:                           "JetBrainsMonoMedium Nerd Font 18";
 }
 
 textbox-prompt-colon {
@@ -96,7 +96,7 @@ element {
 element-icon {
   background-color:               inherit;
   text-color:                     inherit;
-  size:                           24px;
+  size:                           48px;
   border:                         0px;
 }
 

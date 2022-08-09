@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Variables
+PRIMARY=eDP-1
+EXTERNAL=DP-1
+POLYBAR_DIR="$HOME/.config/polybar"
+
+# End polybar processes
+killall -q polybar
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+
+# Verify connected monitors
+if xrandr | grep -w "$EXTERNAL connected"; then
+  mons -e left
+  bspc monitor $EXTERNAL -d 1 2 3 4 5
+  bspc monitor $PRIMARY -d 6 7 8 9 0
+  polybar main -c $POLYBAR_DIR/config.ini &
+  polybar external -c $POLYBAR_DIR/config.ini &
+else
+  mons -o
+  bspc monitor $PRIMARY -d 1 2 3 4 5 6 7 8 9 0
+  polybar main -c $POLYBAR_DIR/config.ini &
+fi
+
+# Wallpaper
+hsetroot -cover Desktop/background.png
